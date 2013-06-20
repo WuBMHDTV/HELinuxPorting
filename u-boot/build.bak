@@ -1,0 +1,4 @@
+make clean
+make distclean
+make ARCH=arm CROSS_CMPILE=arm-none-linux-gnueabi- tiny210_config
+make ARCH=arm CROSS_CMPILE=arm-none-linux-gnueabi- all spl

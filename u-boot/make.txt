@@ -1,0 +1,451 @@
+arm-linux-gcc -DDO_DEPS_ONLY \
+		-g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   \
+		-o lib/asm-offsets.s lib/asm-offsets.c -c -S
+Generating include/generated/generic-asm-offsets.h
+tools/scripts/make-asm-offsets lib/asm-offsets.s include/generated/generic-asm-offsets.h
+if [ -f arch/arm/cpu/armv7/s5pc1xx/asm-offsets.c ];then \
+		arm-linux-gcc -DDO_DEPS_ONLY \
+		-g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   \
+			-o arch/arm/cpu/armv7/s5pc1xx/asm-offsets.s arch/arm/cpu/armv7/s5pc1xx/asm-offsets.c -c -S; \
+	else \
+		touch arch/arm/cpu/armv7/s5pc1xx/asm-offsets.s; \
+	fi
+Generating include/generated/asm-offsets.h
+tools/scripts/make-asm-offsets arch/arm/cpu/armv7/s5pc1xx/asm-offsets.s include/generated/asm-offsets.h
+for dir in tools examples/standalone examples/api arch/arm/cpu/armv7 /root/tiny210_u_boot/arch/arm/cpu/armv7/ ; do \
+			make -C $dir _depend ; done
+make[1]: Entering directory `/root/tiny210_u_boot/tools'
+make[1]: Nothing to be done for `_depend'.
+make[1]: Leaving directory `/root/tiny210_u_boot/tools'
+make[1]: Entering directory `/root/tiny210_u_boot/examples/standalone'
+make[1]: Nothing to be done for `_depend'.
+make[1]: Leaving directory `/root/tiny210_u_boot/examples/standalone'
+make[1]: Entering directory `/root/tiny210_u_boot/examples/api'
+make[1]: Nothing to be done for `_depend'.
+make[1]: Leaving directory `/root/tiny210_u_boot/examples/api'
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make[1]: Nothing to be done for `_depend'.
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make[1]: Nothing to be done for `_depend'.
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make -C tools all
+make[1]: Entering directory `/root/tiny210_u_boot/tools'
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic -c -o crc32.o /root/tiny210_u_boot/lib/crc32.c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o env_embedded.o /root/tiny210_u_boot/common/env_embedded.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic   -o envcrc.o envcrc.c -c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic -c -o sha1.o /root/tiny210_u_boot/lib/sha1.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic  -o envcrc crc32.o env_embedded.o envcrc.o sha1.o
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic   -o gen_eth_addr.o gen_eth_addr.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic  -o gen_eth_addr gen_eth_addr.o
+strip gen_eth_addr
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic   -o img2srec.o img2srec.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic  -o img2srec img2srec.o
+strip img2srec
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o default_image.o default_image.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o fit_image.o fit_image.c -c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o image.o /root/tiny210_u_boot/common/image.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o imximage.o imximage.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o kwbimage.o kwbimage.c -c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic -c -o md5.o /root/tiny210_u_boot/lib/md5.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o mkimage.o mkimage.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o os_support.o os_support.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o omapimage.o omapimage.c -c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES   -o ublimage.o ublimage.c -c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o fdt.o /root/tiny210_u_boot/lib/libfdt/fdt.c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o fdt_ro.o /root/tiny210_u_boot/lib/libfdt/fdt_ro.c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o fdt_rw.o /root/tiny210_u_boot/lib/libfdt/fdt_rw.c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o fdt_strerror.o /root/tiny210_u_boot/lib/libfdt/fdt_strerror.c
+gcc -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -c -o fdt_wip.o /root/tiny210_u_boot/lib/libfdt/fdt_wip.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -idirafter /root/tiny210_u_boot/include -idirafter /root/tiny210_u_boot/include2 -idirafter /root/tiny210_u_boot/include -I /root/tiny210_u_boot/lib/libfdt -I /root/tiny210_u_boot/tools -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DUSE_HOSTCC -D__KERNEL_STRICT_NAMES -pedantic  -o mkimage crc32.o default_image.o fit_image.o image.o imximage.o kwbimage.o md5.o mkimage.o os_support.o omapimage.o sha1.o ublimage.o fdt.o fdt_ro.o fdt_rw.o fdt_strerror.o fdt_wip.o
+strip mkimage
+make[1]: Leaving directory `/root/tiny210_u_boot/tools'
+make -C examples/standalone all
+make[1]: Entering directory `/root/tiny210_u_boot/examples/standalone'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security -fno-toplevel-reorder   -o hello_world.o hello_world.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security -fno-toplevel-reorder   -o stubs.o stubs.c -c
+arm-linux-ld  -r -o libstubs.o  stubs.o
+arm-linux-ld -g -Ttext 0xc100000 \
+			-o hello_world -e hello_world hello_world.o libstubs.o \
+			-L/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1 -lgcc
+arm-linux-objcopy -O srec hello_world hello_world.srec 2>/dev/null
+arm-linux-objcopy -O binary hello_world hello_world.bin 2>/dev/null
+make[1]: Leaving directory `/root/tiny210_u_boot/examples/standalone'
+make -C examples/api all
+make[1]: Entering directory `/root/tiny210_u_boot/examples/api'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/root/tiny210_u_boot/examples/api'
+make -C arch/arm/cpu/armv7 start.o
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o start.o start.S -c
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make -C api/
+make[1]: Entering directory `/root/tiny210_u_boot/api'
+rm -f libapi.o; arm-linux-ar rcs libapi.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/api'
+make -C arch/arm/cpu/armv7/
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cache_v7.o cache_v7.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cpu.o cpu.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o syslib.o syslib.c -c
+arm-linux-ld  -r -o libarmv7.o  cache_v7.o cpu.o syslib.o
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make -C arch/arm/cpu/armv7/s5p-common/
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7/s5p-common'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cpu_info.o cpu_info.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o timer.o timer.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o sromc.o sromc.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o pwm.o pwm.c -c
+arm-linux-ld  -r -o libs5p-common.o  cpu_info.o timer.o sromc.o pwm.o
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7/s5p-common'
+make -C arch/arm/cpu/armv7/s5pc1xx/
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7/s5pc1xx'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o clock.o clock.c -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o cache.o cache.S -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o reset.o reset.S -c
+arm-linux-ld  -r -o libs5pc1xx.o  clock.o cache.o reset.o
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7/s5pc1xx'
+make -C arch/arm/lib/
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/lib'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o board.o board.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o bootm.o bootm.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cache.o cache.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cache-cp15.o cache-cp15.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o interrupts.o interrupts.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o reset.o reset.c -c
+arm-linux-ld  -r -o libarm.o  board.o bootm.o cache.o cache-cp15.o interrupts.o reset.o
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o eabi_compat.o eabi_compat.c -c
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/lib'
+make -C common/
+make[1]: Entering directory `/root/tiny210_u_boot/common'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_bdinfo.o cmd_bdinfo.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_boot.o cmd_boot.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_bootm.o cmd_bootm.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_console.o cmd_console.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_echo.o cmd_echo.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_elf.o cmd_elf.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_exit.o cmd_exit.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_fat.o cmd_fat.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_flash.o cmd_flash.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_help.o cmd_help.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_itest.o cmd_itest.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_load.o cmd_load.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_mem.o cmd_mem.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_misc.o cmd_misc.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_mmc.o cmd_mmc.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_mtdparts.o cmd_mtdparts.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_nand.o cmd_nand.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_net.o cmd_net.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_nvedit.o cmd_nvedit.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_pcmcia.o cmd_pcmcia.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_source.o cmd_source.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_test.o cmd_test.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_version.o cmd_version.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o cmd_ximg.o cmd_ximg.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o command.o command.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o console.o console.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o dlmalloc.o dlmalloc.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o env_common.o env_common.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o env_nand.o env_nand.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o exports.o exports.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o flash.o flash.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o hush.o hush.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o image.o image.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o main.o main.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o memsize.o memsize.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o s_record.o s_record.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o serial.o serial.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o stdio.o stdio.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o xyzModem.o xyzModem.c -c
+arm-linux-ld  -r -o libcommon.o  cmd_bdinfo.o cmd_boot.o cmd_bootm.o cmd_console.o cmd_echo.o cmd_elf.o cmd_exit.o cmd_fat.o cmd_flash.o cmd_help.o cmd_itest.o cmd_load.o cmd_mem.o cmd_misc.o cmd_mmc.o cmd_mtdparts.o cmd_nand.o cmd_net.o cmd_nvedit.o cmd_pcmcia.o cmd_source.o cmd_test.o cmd_version.o cmd_ximg.o command.o console.o dlmalloc.o env_common.o env_nand.o exports.o flash.o hush.o image.o main.o memsize.o s_record.o serial.o stdio.o xyzModem.o
+make[1]: Leaving directory `/root/tiny210_u_boot/common'
+make -C disk/
+make[1]: Entering directory `/root/tiny210_u_boot/disk'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o part.o part.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o part_dos.o part_dos.c -c
+arm-linux-ld  -r -o libdisk.o  part.o part_dos.o
+make[1]: Leaving directory `/root/tiny210_u_boot/disk'
+make -C drivers/bios_emulator/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/bios_emulator'
+rm -f libatibiosemu.o; arm-linux-ar rcs libatibiosemu.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/bios_emulator'
+make -C drivers/block/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/block'
+rm -f libblock.o; arm-linux-ar rcs libblock.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/block'
+make -C drivers/dma/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/dma'
+rm -f libdma.o; arm-linux-ar rcs libdma.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/dma'
+make -C drivers/fpga/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/fpga'
+rm -f libfpga.o; arm-linux-ar rcs libfpga.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/fpga'
+make -C drivers/gpio/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/gpio'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o s5p_gpio.o s5p_gpio.c -c
+arm-linux-ld  -r -o libgpio.o  s5p_gpio.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/gpio'
+make -C drivers/hwmon/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/hwmon'
+rm -f libhwmon.o; arm-linux-ar rcs libhwmon.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/hwmon'
+make -C drivers/i2c/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/i2c'
+rm -f libi2c.o; arm-linux-ar rcs libi2c.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/i2c'
+make -C drivers/input/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/input'
+rm -f libinput.o; arm-linux-ar rcs libinput.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/input'
+make -C drivers/misc/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/misc'
+rm -f libmisc.o; arm-linux-ar rcs libmisc.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/misc'
+make -C drivers/mmc/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/mmc'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o mmc.o mmc.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o s5p_mmc.o s5p_mmc.c -c
+arm-linux-ld  -r -o libmmc.o  mmc.o s5p_mmc.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/mmc'
+make -C drivers/mtd/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/mtd'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o mtdcore.o mtdcore.c -c
+arm-linux-ld  -r -o libmtd.o  mtdcore.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/mtd'
+make -C drivers/mtd/nand/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/mtd/nand'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nand.o nand.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nand_base.o nand_base.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nand_bbt.o nand_bbt.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nand_ecc.o nand_ecc.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nand_ids.o nand_ids.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nand_util.o nand_util.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o s5pc1xx_nand.o s5pc1xx_nand.c -c
+arm-linux-ld  -r -o libnand.o  nand.o nand_base.o nand_bbt.o nand_ecc.o nand_ids.o nand_util.o s5pc1xx_nand.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/mtd/nand'
+make -C drivers/mtd/onenand/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/mtd/onenand'
+rm -f libonenand.o; arm-linux-ar rcs libonenand.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/mtd/onenand'
+make -C drivers/mtd/spi/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/mtd/spi'
+rm -f libspi_flash.o; arm-linux-ar rcs libspi_flash.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/mtd/spi'
+make -C drivers/mtd/ubi/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/mtd/ubi'
+rm -f libubi.o; arm-linux-ar rcs libubi.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/mtd/ubi'
+make -C drivers/net/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/net'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o dm9000x.o dm9000x.c -c
+arm-linux-ld  -r -o libnet.o  dm9000x.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/net'
+make -C drivers/net/phy/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/net/phy'
+rm -f libphy.o; arm-linux-ar rcs libphy.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/net/phy'
+make -C drivers/pci/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/pci'
+rm -f libpci.o; arm-linux-ar rcs libpci.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/pci'
+make -C drivers/pcmcia/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/pcmcia'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o rpx_pcmcia.o rpx_pcmcia.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o tqm8xx_pcmcia.o tqm8xx_pcmcia.c -c
+arm-linux-ld  -r -o libpcmcia.o  rpx_pcmcia.o tqm8xx_pcmcia.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/pcmcia'
+make -C drivers/power/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/power'
+rm -f libpower.o; arm-linux-ar rcs libpower.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/power'
+make -C drivers/rtc/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/rtc'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o date.o date.c -c
+arm-linux-ld  -r -o librtc.o  date.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/rtc'
+make -C drivers/serial/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/serial'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o serial_s5p.o serial_s5p.c -c
+arm-linux-ld  -r -o libserial.o  serial_s5p.o
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/serial'
+make -C drivers/spi/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/spi'
+rm -f libspi.o; arm-linux-ar rcs libspi.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/spi'
+make -C drivers/twserial/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/twserial'
+rm -f libtws.o; arm-linux-ar rcs libtws.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/twserial'
+make -C drivers/usb/eth/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/usb/eth'
+rm -f libusb_eth.o; arm-linux-ar rcs libusb_eth.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/usb/eth'
+make -C drivers/usb/gadget/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/usb/gadget'
+rm -f libusb_gadget.o; arm-linux-ar rcs libusb_gadget.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/usb/gadget'
+make -C drivers/usb/host/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/usb/host'
+rm -f libusb_host.o; arm-linux-ar rcs libusb_host.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/usb/host'
+make -C drivers/usb/musb/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/usb/musb'
+rm -f libusb_musb.o; arm-linux-ar rcs libusb_musb.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/usb/musb'
+make -C drivers/usb/phy/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/usb/phy'
+rm -f libusb_phy.o; arm-linux-ar rcs libusb_phy.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/usb/phy'
+make -C drivers/video/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/video'
+rm -f libvideo.o; arm-linux-ar rcs libvideo.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/video'
+make -C drivers/watchdog/
+make[1]: Entering directory `/root/tiny210_u_boot/drivers/watchdog'
+rm -f libwatchdog.o; arm-linux-ar rcs libwatchdog.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/drivers/watchdog'
+make -C fs/cramfs/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/cramfs'
+rm -f libcramfs.o; arm-linux-ar rcs libcramfs.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/cramfs'
+make -C fs/ext2/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/ext2'
+rm -f libext2fs.o; arm-linux-ar rcs libext2fs.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/ext2'
+make -C fs/fat/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/fat'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o fat.o fat.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o file.o file.c -c
+arm-linux-ld  -r -o libfat.o  fat.o file.o
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/fat'
+make -C fs/fdos/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/fdos'
+rm -f libfdos.o; arm-linux-ar rcs libfdos.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/fdos'
+make -C fs/jffs2/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/jffs2'
+rm -f libjffs2.o; arm-linux-ar rcs libjffs2.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/jffs2'
+make -C fs/reiserfs/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/reiserfs'
+rm -f libreiserfs.o; arm-linux-ar rcs libreiserfs.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/reiserfs'
+make -C fs/ubifs/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/ubifs'
+rm -f libubifs.o; arm-linux-ar rcs libubifs.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/ubifs'
+make -C fs/yaffs2/
+make[1]: Entering directory `/root/tiny210_u_boot/fs/yaffs2'
+rm -f libyaffs2.o; arm-linux-ar rcs libyaffs2.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/fs/yaffs2'
+make -C lib/libfdt/
+make[1]: Entering directory `/root/tiny210_u_boot/lib/libfdt'
+rm -f libfdt.o; arm-linux-ar rcs libfdt.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/lib/libfdt'
+make -C lib/
+make[1]: Entering directory `/root/tiny210_u_boot/lib'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o crc7.o crc7.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o crc16.o crc16.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o crc32.o crc32.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o display_options.o display_options.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o errno.o errno.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o gunzip.o gunzip.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o hashtable.o hashtable.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o lmb.o lmb.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o ldiv.o ldiv.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o net_utils.o net_utils.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o qsort.o qsort.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o strmhz.o strmhz.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o ctype.o ctype.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o div64.o div64.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o string.o string.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o time.o time.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o vsprintf.o vsprintf.c -c
+arm-linux-ld  -r -o libgeneric.o  crc7.o crc16.o crc32.o display_options.o errno.o gunzip.o hashtable.o lmb.o ldiv.o net_utils.o qsort.o strmhz.o ctype.o div64.o string.o time.o vsprintf.o
+make[1]: Leaving directory `/root/tiny210_u_boot/lib'
+make -C lib/lzma/
+make[1]: Entering directory `/root/tiny210_u_boot/lib/lzma'
+rm -f liblzma.o; arm-linux-ar rcs liblzma.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/lib/lzma'
+make -C lib/lzo/
+make[1]: Entering directory `/root/tiny210_u_boot/lib/lzo'
+rm -f liblzo.o; arm-linux-ar rcs liblzo.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/lib/lzo'
+make -C lib/zlib/
+make[1]: Entering directory `/root/tiny210_u_boot/lib/zlib'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o zlib.o zlib.c -c
+arm-linux-ld  -r -o libz.o  zlib.o
+make[1]: Leaving directory `/root/tiny210_u_boot/lib/zlib'
+make -C net/
+make[1]: Entering directory `/root/tiny210_u_boot/net'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o bootp.o bootp.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o eth.o eth.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o net.o net.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o nfs.o nfs.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o tftp.o tftp.c -c
+arm-linux-ld  -r -o libnet.o  bootp.o eth.o net.o nfs.o tftp.o
+make[1]: Leaving directory `/root/tiny210_u_boot/net'
+make -C post/
+make[1]: Entering directory `/root/tiny210_u_boot/post'
+rm -f libpost.o; arm-linux-ar rcs libpost.o 
+make[1]: Leaving directory `/root/tiny210_u_boot/post'
+make -C board/samsung/tiny210/
+make[1]: Entering directory `/root/tiny210_u_boot/board/samsung/tiny210'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o tiny210.o tiny210.c -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o lowlevel_init.o lowlevel_init.S -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o mem_setup.o mem_setup.S -c
+arm-linux-ar crv libtiny210.o tiny210.o lowlevel_init.o mem_setup.o
+a - tiny210.o
+a - lowlevel_init.o
+a - mem_setup.o
+make[1]: Leaving directory `/root/tiny210_u_boot/board/samsung/tiny210'
+make -C /root/tiny210_u_boot/arch/arm/cpu/armv7/ u-boot.lds
+make[1]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make[1]: Nothing to be done for `u-boot.lds'.
+make[1]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+arm-linux-gcc -E -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -DCONFIG_SYS_TEXT_BASE=0x23E00000 -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -include /root/tiny210_u_boot/include/u-boot/u-boot.lds.h  -ansi -D__ASSEMBLY__ -P - </root/tiny210_u_boot/arch/arm/cpu/armv7/u-boot.lds >u-boot.lds
+UNDEF_SYM=`arm-linux-objdump -x board/samsung/tiny210/libtiny210.o api/libapi.o arch/arm/cpu/armv7/libarmv7.o arch/arm/cpu/armv7/s5p-common/libs5p-common.o arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o arch/arm/lib/libarm.o common/libcommon.o disk/libdisk.o drivers/bios_emulator/libatibiosemu.o drivers/block/libblock.o drivers/dma/libdma.o drivers/fpga/libfpga.o drivers/gpio/libgpio.o drivers/hwmon/libhwmon.o drivers/i2c/libi2c.o drivers/input/libinput.o drivers/misc/libmisc.o drivers/mmc/libmmc.o drivers/mtd/libmtd.o drivers/mtd/nand/libnand.o drivers/mtd/onenand/libonenand.o drivers/mtd/spi/libspi_flash.o drivers/mtd/ubi/libubi.o drivers/net/libnet.o drivers/net/phy/libphy.o drivers/pci/libpci.o drivers/pcmcia/libpcmcia.o drivers/power/libpower.o drivers/rtc/librtc.o drivers/serial/libserial.o drivers/spi/libspi.o drivers/twserial/libtws.o drivers/usb/eth/libusb_eth.o drivers/usb/gadget/libusb_gadget.o drivers/usb/host/libusb_host.o drivers/usb/musb/libusb_musb.o drivers/usb/phy/libusb_phy.o drivers/video/libvideo.o drivers/watchdog/libwatchdog.o fs/cramfs/libcramfs.o fs/ext2/libext2fs.o fs/fat/libfat.o fs/fdos/libfdos.o fs/jffs2/libjffs2.o fs/reiserfs/libreiserfs.o fs/ubifs/libubifs.o fs/yaffs2/libyaffs2.o lib/libfdt/libfdt.o lib/libgeneric.o lib/lzma/liblzma.o lib/lzo/liblzo.o lib/zlib/libz.o net/libnet.o post/libpost.o | sed  -n -e 's/.*\(__u_boot_cmd_.*\)/-u\1/p'|sort|uniq`; cd /root/tiny210_u_boot && arm-linux-ld  -pie -T u-boot.lds -Bstatic -Ttext 0x23E00000 $UNDEF_SYM arch/arm/cpu/armv7/start.o --start-group api/libapi.o arch/arm/cpu/armv7/libarmv7.o arch/arm/cpu/armv7/s5p-common/libs5p-common.o arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o arch/arm/lib/libarm.o common/libcommon.o disk/libdisk.o drivers/bios_emulator/libatibiosemu.o drivers/block/libblock.o drivers/dma/libdma.o drivers/fpga/libfpga.o drivers/gpio/libgpio.o drivers/hwmon/libhwmon.o drivers/i2c/libi2c.o drivers/input/libinput.o drivers/misc/libmisc.o drivers/mmc/libmmc.o drivers/mtd/libmtd.o drivers/mtd/nand/libnand.o drivers/mtd/onenand/libonenand.o drivers/mtd/spi/libspi_flash.o drivers/mtd/ubi/libubi.o drivers/net/libnet.o drivers/net/phy/libphy.o drivers/pci/libpci.o drivers/pcmcia/libpcmcia.o drivers/power/libpower.o drivers/rtc/librtc.o drivers/serial/libserial.o drivers/spi/libspi.o drivers/twserial/libtws.o drivers/usb/eth/libusb_eth.o drivers/usb/gadget/libusb_gadget.o drivers/usb/host/libusb_host.o drivers/usb/musb/libusb_musb.o drivers/usb/phy/libusb_phy.o drivers/video/libvideo.o drivers/watchdog/libwatchdog.o fs/cramfs/libcramfs.o fs/ext2/libext2fs.o fs/fat/libfat.o fs/fdos/libfdos.o fs/jffs2/libjffs2.o fs/reiserfs/libreiserfs.o fs/ubifs/libubifs.o fs/yaffs2/libyaffs2.o lib/libfdt/libfdt.o lib/libgeneric.o lib/lzma/liblzma.o lib/lzo/liblzo.o lib/zlib/libz.o net/libnet.o post/libpost.o board/samsung/tiny210/libtiny210.o --end-group /root/tiny210_u_boot/arch/arm/lib/eabi_compat.o  -L /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1 -lgcc -Map u-boot.map -o u-boot
+arm-linux-objcopy -O srec u-boot u-boot.srec
+arm-linux-objcopy --gap-fill=0xff -O binary u-boot u-boot.bin
+make -C spl all
+make[1]: Entering directory `/root/tiny210_u_boot/spl'
+make -C /root/tiny210_u_boot/arch/arm/cpu/armv7 /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/start.o
+make[2]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/start.o start.S -c
+make[2]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make -C /root/tiny210_u_boot/arch/arm/cpu/armv7/
+make[2]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/syslib.o syslib.c -c
+arm-linux-ld  -r -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/libarmv7.o  /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/syslib.o
+make[2]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7'
+make -C /root/tiny210_u_boot/arch/arm/cpu/armv7/s5pc1xx/
+make[2]: Entering directory `/root/tiny210_u_boot/arch/arm/cpu/armv7/s5pc1xx'
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/clock.o clock.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/mmc_boot.o mmc_boot.c -c
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/nand_cp.o nand_cp.c -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/cache.o cache.S -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/reset.o reset.S -c
+arm-linux-ld  -r -o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o  /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/clock.o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/mmc_boot.o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/nand_cp.o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/cache.o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/reset.o
+make[2]: Leaving directory `/root/tiny210_u_boot/arch/arm/cpu/armv7/s5pc1xx'
+make -C /root/tiny210_u_boot/arch/arm/lib/
+make[2]: Entering directory `/root/tiny210_u_boot/arch/arm/lib'
+rm -f /root/tiny210_u_boot/spl/arch/arm/lib/libarm.o; arm-linux-ar rcs /root/tiny210_u_boot/spl/arch/arm/lib/libarm.o 
+arm-linux-gcc  -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -Wall -Wstrict-prototypes -fno-stack-protector -Wno-format-nonliteral -Wno-format-security   -o /root/tiny210_u_boot/spl/arch/arm/lib/eabi_compat.o eabi_compat.c -c
+make[2]: Leaving directory `/root/tiny210_u_boot/arch/arm/lib'
+make -C /root/tiny210_u_boot/board/samsung/tiny210/
+make[2]: Entering directory `/root/tiny210_u_boot/board/samsung/tiny210'
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o /root/tiny210_u_boot/spl/board/samsung/tiny210/lowlevel_init.o lowlevel_init.S -c
+arm-linux-gcc   -D__ASSEMBLY__ -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5   -o /root/tiny210_u_boot/spl/board/samsung/tiny210/mem_setup.o mem_setup.S -c
+arm-linux-ar crv /root/tiny210_u_boot/spl/board/samsung/tiny210/libtiny210.o /root/tiny210_u_boot/spl/board/samsung/tiny210/lowlevel_init.o /root/tiny210_u_boot/spl/board/samsung/tiny210/mem_setup.o
+a - /root/tiny210_u_boot/spl/board/samsung/tiny210/lowlevel_init.o
+a - /root/tiny210_u_boot/spl/board/samsung/tiny210/mem_setup.o
+gcc tools/mkv210_image.c -o tools/mktiny210spl.exe
+make[2]: Leaving directory `/root/tiny210_u_boot/board/samsung/tiny210'
+arm-linux-gcc -E -g  -Os   -fno-common -ffixed-r8 -msoft-float   -D__KERNEL__ -ffunction-sections -fdata-sections -DCONFIG_SYS_TEXT_BASE=0x23E00000 -DCONFIG_SPL_BUILD -I/root/tiny210_u_boot/include -fno-builtin -ffreestanding -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 -include /root/tiny210_u_boot/include/u-boot/u-boot.lds.h -include /root/tiny210_u_boot/include/config.h  -ansi -D__ASSEMBLY__ -P - < /root/tiny210_u_boot/arch/arm/cpu/armv7/u-boot.lds > /root/tiny210_u_boot/spl/u-boot-spl.lds
+UNDEF_SYM=`arm-linux-objdump -x /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/libarmv7.o /root/tiny210_u_boot/spl/arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o /root/tiny210_u_boot/spl/arch/arm/lib/libarm.o /root/tiny210_u_boot/spl/board/samsung/tiny210/libtiny210.o | sed  -n -e 's/.*\(__u_boot_cmd_.*\)/-u\1/p'|sort|uniq`; cd /root/tiny210_u_boot/spl/ && arm-linux-ld  -T /root/tiny210_u_boot/spl/u-boot-spl.lds --gc-sections -Bstatic $UNDEF_SYM arch/arm/cpu/armv7/start.o --start-group arch/arm/cpu/armv7/libarmv7.o arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o arch/arm/lib/libarm.o board/samsung/tiny210/libtiny210.o --end-group /root/tiny210_u_boot/spl/arch/arm/lib/eabi_compat.o -L /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1 -lgcc -Map u-boot-spl.map -o u-boot-spl
+arm-linux-objcopy --gap-fill=0xff -O binary /root/tiny210_u_boot/spl/u-boot-spl /root/tiny210_u_boot/spl/u-boot-spl.bin
+/root/tiny210_u_boot/board/samsung/tiny210/tools/mktiny210spl.exe \
+		/root/tiny210_u_boot/spl/u-boot-spl.bin /root/tiny210_u_boot/spl/tiny210-spl.bin
+cat /root/tiny210_u_boot/spl/tiny210-spl.bin /root/tiny210_u_boot/u-boot.bin > /root/tiny210_u_boot/tiny210-uboot.bin
+make[1]: Leaving directory `/root/tiny210_u_boot/spl'
