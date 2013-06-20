@@ -1,0 +1,4 @@
+#!/bin/sh
+#sudo dd iflag=dsync oflag=dsync if=spl/tiny210-spl.bin of=/dev/sdc seek=1
+sudo dd iflag=dsync oflag=dsync if=tiny210-uboot.bin of=/dev/sdc seek=1
+
